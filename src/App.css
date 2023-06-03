@@ -1,10 +1,30 @@
-.App {
-  text-align: center;
-}
-
 @import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Changa+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Changa:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, .9);
+}
+
 
 * {
   padding: 0;
@@ -17,10 +37,14 @@ body {
   overflow: hidden;
 }
 
+.App {
+  text-align: center;
+}
+
 .background {
   mix-blend-mode: normal;
   filter: blur(5px);
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -98,7 +122,6 @@ body {
   top: 0;
   stroke: black;
   opacity: 1;
-  /**/
 }
 
 @keyframes dropIn {
@@ -561,6 +584,7 @@ p {
   height: 620px;
   top: calc(50vh - 0.5 * 620px);
   width: 73px;
+  transition: opacity .55s ease-in-out;
 }
 
 .navbar-item {
@@ -672,11 +696,17 @@ p {
 }
 
 .sec2 {
-  height: 100vh;
+  height: 600vh;
   width: 100vw;
-  background-color: #202020;
+  z-index: 9;
+  position: absolute;
+  top: 0;
+  background-color: #00000000;
   display: none;
+
+  transition: background-color .63s ease-in-out;
 }
+
 .back-to-home {
   position: fixed;
   height: fit-content;
@@ -690,6 +720,7 @@ p {
 
   transform: rotate(-90deg);
 }
+
 .back-to-home:hover {
   cursor: pointer;
   opacity: 0.6 !important;
@@ -699,4 +730,87 @@ p {
   font-family: "Changa One", sans-serif;
   font-size: 30px;
   color: white;
+}
+
+.sec2-item {
+  display: block;
+  height: 200vh;
+  width: 100vw;
+  position: relative;
+}
+
+.sec2-identifier {
+  position: fixed;
+  top: 20px;
+  left: 29px;
+  opacity: 0;
+
+  font-family: 'Gochi Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: left;
+
+  color: #FFFFFF;
+  transition: opacity .65s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+#skillsWheel {
+  position: fixed;
+  height: 130vh;
+  top: -15vh;
+  right: -30vw;
+  opacity: 0;
+
+  transform: rotate(90deg);
+
+  transition: transform .69s cubic-bezier(0.33, 0.65, 0.39, 0.94), opacity 1.5s cubic-bezier(0.33, 0.65, 0.39, 0.94);
+}
+
+#wheelPointer {
+  position: fixed;
+  top: calc(50vh - 0.5 * 25px);
+  right: 30vw;
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.33, 0.65, 0.39, 0.94);
+}
+
+#sec2-skills-title {
+  position: fixed;
+  top: 15vh;
+  left: 8vw;
+  font-family: 'Montserrat';
+  font-style: italic;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12vw;
+  line-height: 134px;
+  text-align: center;
+
+  color: #FFFFFF;
+  opacity: 0;
+  transform: translate(0, 40px);
+  transition: opacity .43s ease-in-out, transform .85s ease-in-out;
+}
+
+#sec2-skills-description {
+  position: fixed;
+  top: 40vh;
+  left: 10vw;
+  font-family: 'Montserrat';
+  font-style: normal;
+  text-align: left;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 30px;
+  max-width: 55vw;
+
+  color: #FFFFFF;
+  opacity: 0;
+  transform: translate(0, 40px);
+  transition: opacity .43s ease-in-out, transform .85s ease-in-out;
 }

@@ -1,5 +1,7 @@
 import './App.css';
 import $ from 'jquery';
+import skillsWheel from './Shape.png';
+import wheelPointer from './Arrow.png';
 
 function App() {
 
@@ -39,31 +41,31 @@ function App() {
     setTimeout(() => {
 
       $(".svgTop, .svgBottom").css({
-      left: 0,
-      top: 0
-    });
+        left: 0,
+        top: 0
+      });
 
-    $("#tape-container").css("animation", "dropIn 1.5s forwards ease 1s");
+      $("#tape-container").css("animation", "dropIn 1.5s forwards ease 1s");
 
-    setTimeout(() => {
-      $(".item-text, .item-dot").css("filter", "blur(0px)");
-    }, 2000);
+      setTimeout(() => {
+        $(".item-text, .item-dot").css("filter", "blur(0px)");
+      }, 2000);
 
-    currentThemeCounter = Math.floor(Math.random() * 4);
-    updateBackground();
-    setTimeout(() => {
-      $(".out-top, .in-top, .out-bottom, .in-bottom").css(
-        "transition",
-        "fill 15s cubic-bezier(.83,-0.01,.36,1.02)"
-      );
-      $(".background, body").css(
-        "transition",
-        "background-color 15s cubic-bezier(.83,-0.01,.36,1.02), transform 1s cubic-bezier(0.16, 0.69, 0.26, 0.88), opacity 1s ease-in-out .25s"
-      );
-    }, 2000);
-      
+      currentThemeCounter = Math.floor(Math.random() * 4);
+      updateBackground();
+      setTimeout(() => {
+        $(".out-top, .in-top, .out-bottom, .in-bottom").css(
+          "transition",
+          "fill 15s cubic-bezier(.83,-0.01,.36,1.02)"
+        );
+        $(".background, body").css(
+          "transition",
+          "background-color 15s cubic-bezier(.83,-0.01,.36,1.02), transform 1s cubic-bezier(0.16, 0.69, 0.26, 0.88), opacity 1s ease-in-out .25s"
+        );
+      }, 2000);
+
     }, 250);
-    
+
   }
   $(document).ready(function () {
     enterBackground();
@@ -153,14 +155,19 @@ function App() {
     // onclick navbar
 
     $(".navbar-item").on("click", (e) => {
+
+
       // show bars
       $(".bars-b1").addClass("b1-active");
       setTimeout(() => {
-        $("#tape-movement, .navbar").css("display", "none");
+        $("#tape-movement").css("display", "none");
+        $(".navbar").css("opacity", "0");
+        setTimeout(() => {
+          $(".navbar").css("display", "none");
+        }, 550)
         isEnabled = false;
         $("#tape-movement, .background").css("transform", "rotate(0deg)");
-        $(".sec2, .back-to-home").css("display", "block");
-        $(".background").css("opacity", ".3");
+        $(".sec2, .back-to-home, .sec2-identifier").css("display", "block");
       }, 800)
       // exit bars
       setTimeout(() => {
@@ -173,13 +180,44 @@ function App() {
 
       // code after exit bars
       setTimeout(() => {
+
+
+        $("body").css("height", "600vh");
+        $("body").css("overflow", "unset");
+        $("body").css("overflow-x", "hidden");
+        $(".sec2").css("background-color", "#000000bf");
+        $(".sec2-identifier").removeClass("visible");
+        $(".sec2-identifier").eq(0).addClass("visible");
+        $("#sec2-skills-title, #sec2-skills-description").css("opacity", "1");
+        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,0px)");
+
+
         $(".back-to-home").css("opacity", "1")
+        if ($(e.target).attr("tag") == "skills") {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        } else if ($(e.target).attr("tag") == "projects") {
+          window.scrollTo({ top: (2.01 * window.innerHeight), behavior: 'smooth' })
+
+        } else {
+          window.scrollTo({ top: (4.01 * window.innerHeight), behavior: 'smooth' })
+        }
       }, 1700)
     })
 
     $(".back-to-home").on("click", () => {
-      $(".back-to-home").css("opacity", "0");
-      $(".background").css("opacity", "1");
+
+      window.scrollTo(0, 0)
+
+
+
+
+      setTimeout(() => {
+        $(".back-to-home").css("opacity", "0");
+        $("#skillsWheel, #wheelPointer").css("opacity", "0")
+        $(".sec2").css("background-color", "#00000000");
+        $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0");
+        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,40px)");
+      }, 680)
 
 
 
@@ -189,32 +227,78 @@ function App() {
         }, k * 150)
       }
       setTimeout(() => {
-        
+
         for (let k = 0; k < 3; k++) {
           setTimeout(() => {
             $(".bars-b1").eq(k).css("top", "100vw");
           }, k * 150)
         }
+
         setTimeout(() => {
-          $("#tape-movement, .navbar").css("display", "block");
+          $(".sec2-identifier").css("display", "none");
+        }, 100)
+
+        setTimeout(() => {
+          $("#tape-movement").css("display", "block");
+          $(".navbar").css("display", "block");
+
           isEnabled = true;
           $("#tape-movement, .background").css("transform", "rotate(0deg)");
           $(".sec2, .back-to-home").css("display", "none");
           setTimeout(() => {
             $(".bars-b1").removeClass("b1-active");
-          $(".bars-b1").css("top", "0");
-          }, 800);
+            $(".bars-b1").css("top", "0");
+            $(".navbar").css("opacity", "1");
 
 
 
-        }, 200);
-        
+
+
+            $("body").css("height", "100vh");
+            $("body").css("overflow", "hidden");
+
+          }, 200);
+
+
+
+        }, 450);
+
       }, 800);
-        
+
     })
 
 
+    $(window).on("scroll", () => {
+      if ($(window).scrollTop() > (4 * window.innerHeight)) {
+        $(".sec2-identifier").removeClass("visible");
+        $(".sec2-identifier").eq(2).addClass("visible");
 
+        $("#skillsWheel, #wheelPointer").css("opacity", "0")
+
+      } else if ($(window).scrollTop() > (2 * window.innerHeight)) {
+        $(".sec2-identifier").removeClass("visible");
+        $(".sec2-identifier").eq(1).addClass("visible");
+
+        $("#skillsWheel, #wheelPointer").css("opacity", "0")
+      } else {
+        $(".sec2-identifier").removeClass("visible");
+        $(".sec2-identifier").eq(0).addClass("visible");
+
+        $("#skillsWheel, #wheelPointer").css("opacity", "1")
+
+
+
+        // turning of skillsWheel
+
+        $("#skillsWheel").css("transform", `rotate(${90 + ($(window).scrollTop() / (2 * window.innerHeight)) * 360}deg)`)
+
+
+
+
+      }
+
+
+    })
 
 
 
@@ -291,15 +375,15 @@ function App() {
         </div>
       </div>
       <div className="navbar">
-        <div className="navbar-item clickable2">
+        <div className="navbar-item clickable2" tag="skills">
           <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot" />
           <p className="item-text">SKILLS</p>
         </div>
-        <div className="navbar-item item-projects clickable2">
+        <div className="navbar-item item-projects clickable2" tag="projects">
           <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot dot-projects" />
           <p className="item-text text-projects">PROJECTS</p>
         </div>
-        <div className="navbar-item item-aboutme clickable2">
+        <div className="navbar-item item-aboutme clickable2" tag="aboutMe">
           <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot dot-aboutme" />
           <p className="item-text text-aboutme">ABOUT&nbsp;ME</p>
         </div>
@@ -315,7 +399,17 @@ function App() {
 
 
       <div className="sec2">
-        
+        <p className="sec2-identifier">TAPE 1:<br></br>"SKILLS"</p>
+        <p className="sec2-identifier">TAPE 2:<br></br>"PROJECTS"</p>
+        <p className="sec2-identifier">TAPE 3:<br></br>"ABOUTME"</p>
+        <div className="sec2-item" id="skills">
+          <img src={skillsWheel} alt="skillsWheel" id="skillsWheel" />
+          <img src={wheelPointer} alt="wheelPointer" id="wheelPointer" />
+          <p id="sec2-skills-title">Welcome!</p>
+          <p id="sec2-skills-description">Hello there! I’m excited to welcome you to my website! My name is Jens and I’m thrilled to share with you who I am, what I specialize in, and what I’ve worked on in the past.<br></br><br></br>As a computer scientist and designer, I’m passionate about creating innovative solutions that are both functional and beautiful. You’ll find that my work is inspired by my love of technology and design. Without further ado, let’s embark on a new journey together!&nbsp;&nbsp;🚀<br></br><br></br>Begin scrolling to learn more and let me know if there’s anything I can do for you.</p>
+        </div>
+        <div className="sec2-item" id="projects"></div>
+        <div className="sec2-item" id="aboutme"></div>
       </div>
       <div className="back-to-home">
         <p id="back-to-home-txt">HOME</p>
