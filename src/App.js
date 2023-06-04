@@ -2,6 +2,7 @@ import './App.css';
 import $ from 'jquery';
 import skillsWheel from './Shape.png';
 import wheelPointer from './Arrow.png';
+import proj1 from './proj1.webp';
 
 function App() {
 
@@ -154,55 +155,7 @@ function App() {
     });
     // onclick navbar
 
-    $(".navbar-item").on("click", (e) => {
 
-
-      // show bars
-      $(".bars-b1").addClass("b1-active");
-      setTimeout(() => {
-        $("#tape-movement").css("display", "none");
-        $(".navbar").css("opacity", "0");
-        setTimeout(() => {
-          $(".navbar").css("display", "none");
-        }, 550)
-        isEnabled = false;
-        $("#tape-movement, .background").css("transform", "rotate(0deg)");
-        $(".sec2, .back-to-home, .sec2-identifier").css("display", "block");
-      }, 800)
-      // exit bars
-      setTimeout(() => {
-        for (let k = 0; k < 3; k++) {
-          setTimeout(() => {
-            $(".b1-active").eq(k).css("top", "-100vw");
-          }, k * 150)
-        }
-      }, 1250)
-
-      // code after exit bars
-      setTimeout(() => {
-
-
-        $("body").css("height", "600vh");
-        $("body").css("overflow", "unset");
-        $("body").css("overflow-x", "hidden");
-        $(".sec2").css("background-color", "#000000bf");
-        $(".sec2-identifier").removeClass("visible");
-        $(".sec2-identifier").eq(0).addClass("visible");
-        $("#sec2-skills-title, #sec2-skills-description").css("opacity", "1");
-        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,0px)");
-
-
-        $(".back-to-home").css("opacity", "1")
-        if ($(e.target).attr("tag") == "skills") {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        } else if ($(e.target).attr("tag") == "projects") {
-          window.scrollTo({ top: (2.01 * window.innerHeight), behavior: 'smooth' })
-
-        } else {
-          window.scrollTo({ top: (4.01 * window.innerHeight), behavior: 'smooth' })
-        }
-      }, 1700)
-    })
 
     $(".back-to-home").on("click", () => {
 
@@ -249,11 +202,6 @@ function App() {
             $(".bars-b1").removeClass("b1-active");
             $(".bars-b1").css("top", "0");
             $(".navbar").css("opacity", "1");
-
-
-
-
-
             $("body").css("height", "100vh");
             $("body").css("overflow", "hidden");
 
@@ -267,37 +215,224 @@ function App() {
 
     })
 
+    const skillsTitles = ["Welcome!", "Front-end Design", "Back-end Development", "React", "Other Skills", "Github and Scrum", "Other languages", "Javascript Libraries"];
+    const skillsDescriptions = ["Hello there! I’m excited to welcome you to my website! My name is Jens and I’m thrilled to share with you who I am, what I specialize in, and what I’ve worked on in the past.<br/><br/>As a computer scientist and designer, I’m passionate about creating innovative solutions that are both functional and beautiful. You’ll find that my work is inspired by my love of technology and design. Without further ado, let’s embark on a new journey together!&nbsp;&nbsp;🚀<br/></br/>Begin scrolling to learn more and let me know if there’s anything I can do for you.", "Front-end design is the process of designing and building the user interface for a website or application. It involves creating HTML, CSS, and presentational JavaScript code that make up a user interface. It also requires coordination with user experience (UX) and graphic design teams to ensure the interface matches the target demographic and the product. Front-end design is a collaborative and human-centered practice that collects user feedback in each phase.<br/><br/>As a web developer with a strong skill set in front-end design, I focus on creativity and originality to make my work stand out. My creativity is not limited to just design, but extends to my ability to solve problems and find innovative solutions. <br/><br/>Overall, my skill in front-end design is a testament to my passion for creativity, originality, and ability to think outside the box. My designs are visually stunning and functional, and I am always looking for new ways to push the boundaries of what is possible. 😎", "Back-end development refers to the development of server-side logic that powers websites and apps from behind the scenes. It includes all the code needed to build out the database, server, and application.<br/><br/>As a web dev, my experience in back-end development lies in that I’ve worked with databases using Node.js and SQL to communicate and securely hash and store account-related data. I understand the importance of security when it comes to user data, which is why I take great care in ensuring that all data is properly encrypted and stored. I also understand the importance of scalability and strive to create back-end systems that can handle large amounts of traffic without slowing down.<br/> <br/> Altogether, while I may not have mastered back-end development yet, I’m excited about the possibilities it offers and am always looking for new ways to improve my skills. 😊", "With multiple years of experience in the field, I have developed a strong skillset in using React. React is a JavaScript library for building user interfaces, developed and maintained by Facebook. It is widely used in the industry and is known for its efficiency and flexibility.<br/><br/>React allows me to build reusable UI components and manage the state of their applications in a declarative way. This means that I can focus on describing what the UI should look like at any given moment, and React takes care of updating the UI when the underlying data changes. One of the key features of React is its virtual DOM (Document Object Model), which allows it to efficiently update the UI by only changing the parts that need to be updated. This results in fast and smooth updates, even for complex applications. <br/><br/> My experience with React has allowed me to develop a deep understanding of its inner workings and best practices, from which I strive to create high-quality, efficient, and user-friendly applications that meet the needs of my clients.", "In addition to my technical expertise, I have a strong foundation in mathematics which allows me to approach complex problems with a logical and analytical mindset.<br/><br/> Language wise my proficiency in English is at a C1 level, meaning I am able to effectively communicate and collaborate with colleagues and clients from all over the world. And as a native Dutch speaker, I am also able to bring my language skills to the table when working with Dutch-speaking clients or team members.<br/><br/> In addition to my existing skills and experiences, I am also committed to continuous learning and development. This September, I will be starting a degree in Computer Science at the University of Leiden.<br/><br/> These additional skills and experiences have helped me to become a well-rounded and versatile developer, capable of tackling a wide range of challenges and delivering high-quality results.", " These two tools have been the foundation of all my recent projects and have played a crucial role in their success. Git is a powerful version control system that allows me to keep track of changes to my code and collaborate with other developers. Scrum, on the other hand, is an agile framework that helps me manage and organize my work in an efficient and effective manner.<br/><br/>One of the reasons why Scrum is so important is because it allows for constant feedback and improvement. By breaking down work into small, manageable chunks called sprints, I am able to regularly review my progress and make any necessary adjustments. This helps me stay on track and ensures that I am always working towards the best possible end result.<br/><br/>Another key benefit of Scrum is its emphasis on collaboration and communication. By working closely with my team and regularly checking in with stakeholders, I am able to ensure that everyone is on the same page and that we are all working towards a common goal. This helps to prevent misunderstandings and ensures that everyone is fully invested in the success of the project.<br/><br/>To conclude, my experience with Git and Scrum has been incredibly valuable. These tools have helped me to work more efficiently, collaborate more effectively, and ultimately deliver better results. I believe that any project can benefit from the use of these tools, and I would highly recommend them to anyone looking to improve their workflow and achieve better outcomes.", " While my primary focus is on web development, I also have some experience with non-web development languages. For example, I have experimented with VBA and C++ in class and have even created tiny games in Java and Python.<br/><br/> Although I don’t have much experience with Python ( in the sense of data-science), I am confident that I will be able to pick it up easily when required. This is because Python is known for its simplicity and ease of use, and its base components are similar to other programming languages that I am already familiar with. On top, I'll be improving in all of these languages ( and more!) in the upcoming years during my University studies.<br/><br/>In short, my diverse skill set and willingness to learn new languages make me a versatile and valuable asset to any team. Whether it’s building complex web applications or experimenting with new technologies, I am always eager to expand my knowledge and take on new challenges.", "JavaScript libraries are collections of pre-written JavaScript code that provide developers with a set of features and functionalities to use in their projects. These libraries can save developers time and effort by providing them with ready-made solutions to common problems. <br/><br/>I have extensive experience working with my top three favorite JavaScript libraries: JQuery, GSAP, and AnimeJS. I use JQuery on every project because it allows for easy code readability and makes it simple to manipulate the DOM. When it comes to complicated motion design, GSAP and AnimeJS are my weapons of choice. GSAP is great for handling easier motions while AnimeJS excels at more complicated animations.<br/><br/>These libraries allow me to create engaging and interactive user experiences on the web. With my knowledge and expertise in these tools, I am able to bring my clients’ visions to life and deliver high-quality results."];
+    let currentIndex = 0;
+    let previousIndex = 0;
 
-    $(window).on("scroll", () => {
-      if ($(window).scrollTop() > (4 * window.innerHeight)) {
+    function updateItems() {
+      if ($(window).scrollTop() >= (2.2 * window.innerHeight)) {
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(2).addClass("visible");
 
-        $("#skillsWheel, #wheelPointer").css("opacity", "0")
+        $("#skillsWheel, #wheelPointer, #sec2-skills-title, #sec2-skills-description").css("opacity", "0")
+        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,40px)");
+
+        $(".project-item").removeClass("item-visible");
+
 
       } else if ($(window).scrollTop() > (2 * window.innerHeight)) {
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(1).addClass("visible");
 
-        $("#skillsWheel, #wheelPointer").css("opacity", "0")
-      } else {
+        $("#skillsWheel, #wheelPointer, #sec2-skills-title, #sec2-skills-description").css("opacity", "0");
+        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,40px)");
+
+        $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0");
+        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0, 40px)");
+
+        setTimeout(() => {
+          if ($(window).scrollTop() > (2 * window.innerHeight) && $(window).scrollTop() < (2.2 * window.innerHeight)) {
+            $(".project-item").addClass("item-visible");
+          } else {
+            $(".project-item").removeClass("item-visible");
+
+          }
+        }, 800);
+      } else if ($(window).scrollTop() < 5) {
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(0).addClass("visible");
+        $("#skillsWheel, #wheelPointer").css("opacity", "0")
 
-        $("#skillsWheel, #wheelPointer").css("opacity", "1")
+        $(".project-item").removeClass("item-visible");
 
+      } else {
+        $(".project-item").removeClass("item-visible");
 
-
+        $(".sec2-identifier").removeClass("visible");
+        $(".sec2-identifier").eq(0).addClass("visible");
+        $("#skillsWheel, #wheelPointer").css("opacity", "1");
+        if ($(window).scrollTop() > (1.95 * window.innerHeight) && $(window).scrollTop() < (2 * window.innerHeight)) {
+          $("#sec2-skills-title, #sec2-skills-description").css({
+            "opacity": "1",
+            "transform": "translate(0,0px)"
+          });
+        }
         // turning of skillsWheel
 
         $("#skillsWheel").css("transform", `rotate(${90 + ($(window).scrollTop() / (2 * window.innerHeight)) * 360}deg)`)
 
+        // changing text
 
+
+        for (let k = 0; k < 8; k++) {
+          if ((($(window).scrollTop() / (0.25 * window.innerHeight)) - k) >= 0) {
+            currentIndex = k;
+          }
+        }
+
+        if (currentIndex !== previousIndex) {
+          $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0")
+          setTimeout(() => {
+            if (skillsTitles[currentIndex].length >= 20) {
+              $("#sec2-skills-title").css({
+                "font-size": "5.2vw",
+                "top": "15vh"
+              });
+            } else if (skillsTitles[currentIndex].length > 8) {
+              $("#sec2-skills-title").css({
+                "font-size": "6.9vw",
+                "top": "12vh"
+              });
+            } else {
+              $("#sec2-skills-title").css("font-size", "12vw");
+              if (skillsDescriptions[currentIndex].length > 700) {
+                $("#sec2-skills-title").css("top", "4vh");
+              } else if (skillsDescriptions[currentIndex].length > 700) {
+                $("#sec2-skills-title").css("top", "4vh");
+              } else {
+                $("#sec2-skills-title").css("top", "13vh");
+              }
+
+            }
+            if (skillsDescriptions[currentIndex].length > 700) {
+              if (skillsDescriptions[currentIndex].length > 1400) {
+                if (skillsTitles[currentIndex].length > 18) {
+                  $("#sec2-skills-description").css({
+                    "font-size": "1vw",
+                    "line-height": "1.7vw",
+                    "top": "28vh",
+                  })
+                } else {
+                  $("#sec2-skills-description").css({
+                    "font-size": "1vw",
+                    "line-height": "1.7vw",
+                    "top": "30vh",
+                  })
+                }
+
+              } else {
+                if (skillsTitles[currentIndex].length > 18) {
+                  $("#sec2-skills-description").css({
+                    "font-size": "1.1vw",
+                    "line-height": "2vw",
+                    "top": "30vh",
+                  })
+                } else {
+                  $("#sec2-skills-description").css({
+                    "font-size": "1.1vw",
+                    "line-height": "2vw",
+                    "top": "32vh",
+                  })
+                }
+              }
+            } else {
+              $("#sec2-skills-description").css({
+                "font-size": "1.1vw",
+                "line-height": "2vw",
+                "top": "42.5vh",
+              })
+
+            }
+            $("#sec2-skills-title").html(`${skillsTitles[currentIndex]}`);
+            $("#sec2-skills-description").html(`${skillsDescriptions[currentIndex]}`);
+            if ($(window).scrollTop() < (2 * window.innerHeight)) {
+              $("#sec2-skills-title, #sec2-skills-description").css({
+                "opacity": "1",
+                "transform": "translate(0,0px)"
+              })
+
+            } else {
+              $("#sec2-skills-title, #sec2-skills-description").css({
+                "opacity": "0",
+                "transform": "translate(0,40px)"
+              })
+            }
+          }, 650);
+        }
+
+        previousIndex = currentIndex;
+
+        if ($(window).scrollTop() === 5) {
+          $("#skillsWheel, #wheelPointer").css("opacity", "0")
+        }
 
 
       }
 
 
+    }
+
+    $(window).on("scroll", () => {
+      updateItems();
+
+    })
+
+    $(".navbar-item").on("click", (e) => {
+
+
+      // show bars
+      $(".bars-b1").addClass("b1-active");
+      setTimeout(() => {
+        $("#tape-movement").css("display", "none");
+        $(".navbar").css("opacity", "0");
+        setTimeout(() => {
+          $(".navbar").css("display", "none");
+        }, 550)
+        isEnabled = false;
+        $("#tape-movement, .background").css("transform", "rotate(0deg)");
+        $(".sec2, .back-to-home, .sec2-identifier").css("display", "block");
+      }, 800)
+      // exit bars
+      setTimeout(() => {
+        for (let k = 0; k < 3; k++) {
+          setTimeout(() => {
+            $(".b1-active").eq(k).css("top", "-100vw");
+          }, k * 150)
+        }
+      }, 1250)
+
+      // code after exit bars
+      setTimeout(() => {
+
+
+        $("body").css("height", "600vh");
+        $("body").css("overflow", "unset");
+        $("body").css("overflow-x", "hidden");
+        $(".sec2").css("background-color", "#000000bf");
+        $(".sec2-identifier").removeClass("visible");
+        $(".sec2-identifier").eq(0).addClass("visible");
+        $("#sec2-skills-title, #sec2-skills-description").css("opacity", "1");
+        $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,0px)");
+
+        $(".back-to-home").css("opacity", "1")
+
+        if ($(e.target).attr("tag") === "skills") {
+          $('html, body').animate({
+            scrollTop: 5
+          }, 0);
+
+        } else if ($(e.target).attr("tag") === "projects") {
+          $('html, body').animate({
+            scrollTop: (2.05 * (window.innerHeight))
+          }, 1000);
+
+        } else if ($(e.target).attr("tag") === "aboutMe") {
+          $('html, body').animate({
+            scrollTop: (2.25 * (window.innerHeight))
+          }, 1000);
+        }
+      }, 1450)
     })
 
 
@@ -370,21 +505,21 @@ function App() {
           <div className="tape-hashtag">
             <p className="hashtag-text glitch" data-text="#MAKINGDREAMSCOMETRUE">#MAKINGDREAMSCOMETRUE</p>
           </div>
-          <img className="tape-img-globe clickable" src="https://mproses.github.io/hosted-assets/image%201.png" />
-          <img className="tape-img-linkedin clickable" src="https://mproses.github.io/hosted-assets/image%202.png" />
+          <img className="tape-img-globe clickable" src="https://mproses.github.io/hosted-assets/image%201.png" alt="globe-icon" />
+          <img className="tape-img-linkedin clickable" src="https://mproses.github.io/hosted-assets/image%202.png" alt="linkedin-icon" />
         </div>
       </div>
       <div className="navbar">
         <div className="navbar-item clickable2" tag="skills">
-          <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot" />
+          <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot" alt="dot" />
           <p className="item-text">SKILLS</p>
         </div>
         <div className="navbar-item item-projects clickable2" tag="projects">
-          <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot dot-projects" />
+          <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot dot-projects" alt="dot" />
           <p className="item-text text-projects">PROJECTS</p>
         </div>
         <div className="navbar-item item-aboutme clickable2" tag="aboutMe">
-          <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot dot-aboutme" />
+          <img src="https://mproses.github.io/hosted-assets/Ellipse%201.png" className="item-dot dot-aboutme" alt="dot" />
           <p className="item-text text-aboutme">ABOUT&nbsp;ME</p>
         </div>
 
@@ -408,7 +543,23 @@ function App() {
           <p id="sec2-skills-title">Welcome!</p>
           <p id="sec2-skills-description">Hello there! I’m excited to welcome you to my website! My name is Jens and I’m thrilled to share with you who I am, what I specialize in, and what I’ve worked on in the past.<br></br><br></br>As a computer scientist and designer, I’m passionate about creating innovative solutions that are both functional and beautiful. You’ll find that my work is inspired by my love of technology and design. Without further ado, let’s embark on a new journey together!&nbsp;&nbsp;🚀<br></br><br></br>Begin scrolling to learn more and let me know if there’s anything I can do for you.</p>
         </div>
-        <div className="sec2-item" id="projects"></div>
+        <div className="sec2-item" id="projects">
+          <div id="project-items-container">
+            <div className="project-item">
+              <img src={proj1} alt="showcase" className="project-item-img" />
+              <div className="project-item-title-container">
+                <p className="project-item-title">THIS WEBSITE</p>
+              </div>
+            </div>
+            <div className="project-item project-item-bottom"></div>
+            <div className="project-item"></div>
+            <div className="project-item project-item-bottom"></div>
+            <div className="project-item"></div>
+            <div className="project-item project-item-bottom"></div>
+          </div>
+
+
+        </div>
         <div className="sec2-item" id="aboutme"></div>
       </div>
       <div className="back-to-home">
